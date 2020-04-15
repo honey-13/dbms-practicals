@@ -1,0 +1,47 @@
+Name   : honey yadav
+Course :Bsc.(H) Stats
+Roll No. : 20191213
+
+
+
+Q1). 
+
+create database DU.library;
+create table LibraryBooks(
+Accession.Number decimal(8) primary key,
+Title varchar(20) not null,
+Author varchar(25) not null,
+Department varchar(20) not null,
+Purchase.Date date not null,
+Price decimal(7,2) not null);
+
+Create table IssuedBooks(
+Accession.Number decimal(8) not null,
+Borrower Varchar(20) not null
+foreign key (Accession.Number) references LibraryBooks(Accession.Number));
+
+(a)Primary Key- Accession.Number in table LibraryBooks
+        Foreign Key- Accession.Number in table IssuedBooks
+insert into LibraryBooks values(12345,"History of medieval india","Chandrashekhar rao","History",'2004-01-12',250.35);
+insert into LibraryBooks values(12346,"Database System Concepts"," Shaurya Singh","CS",'2001/05/30',920.00);
+insert into LibraryBooks values(12347,"Fundamental of Statistics","V.K. Kapoor","Statistics",'2005/03/31',550.00);
+insert into LibraryBooks values(12348,"Python programming","prasad","CS",'2002/07/21',499.00);
+insert into LibraryBooks values(12349,"Discrete Maths","kailash kumar","Mathematics",'1999/09/04',450.00);
+
+insert into IssuedBooks values(12346,"patrik lecobs");
+insert into IssuedBooks values(12347,"kartik yadav");
+insert into IssuedBooks values(12349,"semen panday");
+insert into IssuedBooks values(12346,"lakshay yadav");
+insert into IssuedBooks values(12348,"priyanshu jain");
+
+(b) delete from librarybooks where title = “Database System Concepts”
+
+(c) update librarybooks set department="CS" where title="discrete maths";
+
+(d) select Title from librarybooks where department="CS";
+
+(e) select Title from librarybooks where department="CS" and author="navathe";
+
+(f) select Title from librarybooks l, issuedbooks i where l.accession.number=i.Accession.Number and l.department="CS";
+
+(g) select Title from librarybooks where price<500 and Purchase.Date between '1999/01/01' and '2004/01/01';
